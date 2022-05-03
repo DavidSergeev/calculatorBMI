@@ -14,12 +14,12 @@ public class ResultFrame extends JFrame implements ActionListener {
     private JButton againButton;
     private JLabel nameValLabel;
     private JLabel resultForLabel;
-    private double height;
-    private double weight;
-    private double age;
-    private BodyFrame bodyFrame;
-    private String firstName;
-    private String lastName;
+    private final double height;
+    private final double weight;
+    private final double age;
+    private final BodyFrame bodyFrame;
+    private final String firstName;
+    private final String lastName;
 
     public ResultFrame(double height, double weight, double age , BodyFrame bodyFrame , String firstName, String lastName) {
         this.height = height;
@@ -46,7 +46,7 @@ public class ResultFrame extends JFrame implements ActionListener {
 
     private void defineResultValues(){
         double result = weight/(height*height);
-        String wStatusMessage = "";
+        String wStatusMessage;
 
         if (result < 15) {
             wStatusMessage = "Anorexic";
@@ -78,7 +78,6 @@ public class ResultFrame extends JFrame implements ActionListener {
             case LARGE -> 1.1;
         };
 
-        System.out.println(height);
 
         double idealWeight = (((height-1)*100d)+(age/10))*0.9*slimness;
 
@@ -87,9 +86,6 @@ public class ResultFrame extends JFrame implements ActionListener {
 
     private void defineNameField() {
         int[] spacesQuantity = countSpaces(firstName, lastName);
-        for (int i = 0; i < firstName.length(); i++) {
-
-        }
 
         String nameMessage = "";
         if (spacesQuantity[0] > 1 || spacesQuantity[1] > 1 ||
