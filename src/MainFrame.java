@@ -184,14 +184,6 @@ public class MainFrame extends JFrame implements ActionListener {
         ResultFrame resultFrame = new ResultFrame(height, weight, sliderAge.getValue(), bodyFrame, firstName, lastName);
 
 
-
-/*        double weight = sliderWeight.getValue();
-        double height = (sliderHeight.getValue()/100d);
-        double result = weight/(height*height);
-        System.out.printf("Your BMI: %.1f", result);
-        System.out.println();*/
-
-
     }
 
     private void resetUserData(){
