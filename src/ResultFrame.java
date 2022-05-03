@@ -14,7 +14,8 @@ public class ResultFrame extends JFrame implements ActionListener {
     private JButton againButton;
     private JLabel nameValLabel;
     private JLabel resultForLabel;
-    private final double height;
+    private JLabel kgLabel;
+    private double height;
     private final double weight;
     private final double age;
     private final BodyFrame bodyFrame;
@@ -45,7 +46,7 @@ public class ResultFrame extends JFrame implements ActionListener {
     }
 
     private void defineResultValues(){
-        double result = weight/(height*height);
+        double result = weight/((height*height)/10000d);
         String wStatusMessage;
 
         if (result < 15) {
@@ -78,8 +79,26 @@ public class ResultFrame extends JFrame implements ActionListener {
             case LARGE -> 1.1;
         };
 
+        double idealWeight;
 
-        double idealWeight = (((height-1)*100d)+(age/10))*0.9*slimness;
+        if (age <= 14 && age > 5) {
+            idealWeight = 4*age;
+        }
+        else if (age <= 5 && age >= 1) {
+            idealWeight = 2*(age+5);
+        }
+        else if (age == 0) {
+            idealWeight = 3.5;
+        }
+        else {
+
+            if (height >= 150) {
+                idealWeight = ((height - 100d) + (age / 10)) * 0.9 * slimness;
+
+            } else {
+                idealWeight = ((height - 100d) + (age / 10))*(slimness+0.18);
+            }
+        }
 
         IdealWVal.setText(String.format("%.1f", idealWeight));
     }

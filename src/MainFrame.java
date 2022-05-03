@@ -47,8 +47,11 @@ public class MainFrame extends JFrame implements ActionListener {
 
         activateSliders();
         activateButtons();
+        addTextFieldsListeners();
 
+    }
 
+    private void addTextFieldsListeners(){
         enterTheFirstNameTextField.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -177,7 +180,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
     private void calculateBMI() {
         double weight = sliderWeight.getValue();
-        double height = (sliderHeight.getValue()/100d);
+        double height = sliderHeight.getValue();
         String firstName = enterTheFirstNameTextField.getText();
         String lastName = enterTheLastNameTextField.getText();
         this.setVisible(false);
@@ -190,8 +193,8 @@ public class MainFrame extends JFrame implements ActionListener {
         enterTheFirstNameTextField.setText("Enter the first name.");
         enterTheLastNameTextField.setText("Enter the last name.");
         sliderAge.setValue(65);
-        sliderHeight.setValue(115);
-        sliderWeight.setValue(150);
+        sliderHeight.setValue(180);
+        sliderWeight.setValue(160);
         maleRadioButton.setSelected(true);
         smallRadioButton.setSelected(true);
     }
